@@ -13,20 +13,20 @@ date: 2017-11-21 15:32:24
 `npm install -g hexo-cli`   
 
 执行后系统内即可完成hexo的安装，还需执行hexo命令初始化：  
-
+可以使用taobao的npm源能加速下载
 `$ hexo init <folder>
 $ cd <folder>
 $ npm install
 ` 
 
-## 修改部署  
-### 生成新的文档  
+### 修改部署  
+#### 生成新的文档  
 `
 hexo new {layout} draft/post/page {title} 
 `  
 修改文件内容后执行生成部署
 
-### 文本内增加图片
+#### 文本内增加图片
 需要配置hexo的_config.yml文件，修改   
 `post_asset_folder选项设置为true`  
 在Hexo文档目录中安装新插件
@@ -35,31 +35,59 @@ hexo new {layout} draft/post/page {title}
 目前我使用的是Mweb方式增加截图，截图复制在别的场景下很方便，但是在Hexo中有些需要修改的地方暂时没法配置，比如复制截图保存的路径是./media/xxx.jpg 如果能够自动配置成文件名路径就特别方便了，不知道作者会不会增加这个选项。  
 
 ### 生成部署  
+使用hexo的_config配置文件内部的git或者ftp方式进行分发，但是如果使用的是netlify进行部署的话，直接git commit;git push即可触发netlify的build和deploy动作，本地在commit前使用hexo generate;hexo s 查看变动即可。
 `
 hexo clean; hexo g; hexo d;
-`  
+`
 ![](http://ozrbj341q.bkt.clouddn.com/15112507811028.jpg)
 
-# 使用Jekyll部署
-## 安装基础环境  
+## 使用Jekyll部署
+### 安装基础环境  
 1. 安装ruby
-2. 安装jekyll
+2. 安装jekyll  
 ```
 sudo gem install jekyll
-```  
-如果速度慢的话，使用淘宝的源
-```
+如果速度慢的话，使用淘宝的源  
 gem source -r  https://rubygems.org/
 gem source -a  https://ruby.taobao.org/ 
-```  
+```
 3. 进入下载的目录
 执行命令安装必须的安装包
 ```
 bundle install
 ```
+### 上传分发
+步骤和hexo的类似，都是本地生成静态文件，然后分发到自己的服务器或者是类似netlify的服务商，这里就不多说了。  
+## Netlify部署
+**hexo和jeklly使用下来觉得还是hexo好看**，特别是在看完[Bruise的blog](http://www.yangguanjun.com)，我还是兜兜转转用回了hexo。
+### hexo的部署
+官方的说的比较好，直接上链接 [hexo-on-netlify](https://www.netlify.com/blog/2015/10/26/a-step-by-step-guide-hexo-on-netlify/)
+需要注意的是hexo 的配置分为网页的_config.yml和theme的_config.yml,配置主题的具体参数需要修改theme/xxx/_config.yml内容。
+注意在netlify中配置需要注意几个地方  
+
+```
+Build Command: hexo generate
+Dir： /public
+```  
+### jekyll的部署
+还是推荐官方教程[jekyll-on-netlify](https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/)  
+
+### DNS配置
+1. 域名商处修改DNS解析至Netlify.(CNAME修改）
+2. Netlify配置DNS参数;  
+
+### Netlify好处
+1. 全站几乎一键https，B格高
+2. 省心
+3. 省心
+4. 还是省心  
+
+### Blog-tips
+hexo目录设置了dropbox和坚果云自动同步。外加GitHub服用，数据安全和冲突应该不会有太大问题。  
+
 
 ## 配置图片插入功能
-使用github上传图片文件的功能一直没有成功，最后还是决定使用七牛的对象存储服务
+使用github上传图片文件的功能一直没有成功，最后还是决定使用七牛的对象存储服务，使用Mac下的MWeb能够很好的实现这个功能。
 ### 七牛服务
 以MWeb编辑器为例子，打开MWeb，MWeb-偏好设置-Publishing，看到下面的界面后
 #### API URL 选择
