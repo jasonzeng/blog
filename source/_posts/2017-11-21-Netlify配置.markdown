@@ -82,15 +82,16 @@ Dir： /public
 3. 省心
 4. 还是省心  
 
-### Blog-tips
+## Blog-tips
+### 同步
 hexo目录设置了dropbox和坚果云自动同步。外加GitHub服用，数据安全和冲突应该不会有太大问题。  
 
 
-## 配置图片插入功能
+### 配置图片插入功能
 使用github上传图片文件的功能一直没有成功，最后还是决定使用七牛的对象存储服务，使用Mac下的MWeb能够很好的实现这个功能。
-### 七牛服务
+#### 七牛服务
 以MWeb编辑器为例子，打开MWeb，MWeb-偏好设置-Publishing，看到下面的界面后
-#### API URL 选择
+##### API URL 选择
 ![](http://ozrbj341q.bkt.clouddn.com/15112546382985.jpg)
 
 点击右下角七牛云处即可弹出七牛云的配置页面
@@ -100,11 +101,11 @@ hexo目录设置了dropbox和坚果云自动同步。外加GitHub服用，数据
 ![](http://ozrbj341q.bkt.clouddn.com/15112547131951.jpg)
 
 
-#### Bucket Name
+##### Bucket Name
 
 填入创建存储空间的名字即可。
 
-#### Access Key 与Secret Key
+##### Access Key 与Secret Key
 
 登录七牛云后，进入管理控制台后，在个人面板中选择秘钥管理
 
@@ -112,7 +113,7 @@ hexo目录设置了dropbox和坚果云自动同步。外加GitHub服用，数据
 
 即可查到对应的AK与SK
 ![](http://ozrbj341q.bkt.clouddn.com/15112547560115.jpg)
-#### Image Url Prefix
+##### Image Url Prefix
 
 此处填入该对象存储的加速域名/测试域名，可在控制台-对象存储右侧看到。填入即可。
 
@@ -123,8 +124,8 @@ hexo目录设置了dropbox和坚果云自动同步。外加GitHub服用，数据
 点击validate就可以选择一张图片进行测试
 
 
-### 本地配置
-#### 图片上传
+#### 本地配置
+##### 图片上传
 
 插入图片以后，图片的路径仍然本地路径，所以要进行最后一步，图片上传到七牛云，并且替换所有的图片地址为上传后的可以访问的url
 在工具栏选择 Publish-Upload Local Images to… 打开下面的界面，会显示所有你在此文件中引入的本地图片
@@ -132,7 +133,7 @@ hexo目录设置了dropbox和坚果云自动同步。外加GitHub服用，数据
 点击Upload Images后，所有的图片都有了自己对应的上传后的URL，如
 ![](http://ozrbj341q.bkt.clouddn.com/15112551105880.jpg)
 
-#### 地址替换
+##### 地址替换
 
 当图片都上传成功后，就剩下最后一步，替换我们文档中的本地路径为网络路径。
 
